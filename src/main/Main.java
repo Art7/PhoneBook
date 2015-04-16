@@ -32,14 +32,15 @@ public class Main {
             System.out.println("4 - вывести все контакты");
             System.out.println("5 - вывести контакт по имени");
             System.out.println("6 - редактировать контакт");
-            System.out.println("7 - выход из программы");
+            System.out.println("7 - сортировать");
+            System.out.println("8 - выход из программы");
             Scanner scan = new Scanner(System.in);
             try {
                 a = scan.nextInt();
             }
             catch ( InputMismatchException e)
             {
-                a = 8;
+                a = 9;
             }
             switch (a) {
                 case 1: {
@@ -54,15 +55,13 @@ public class Main {
                 }
                 case 2: {
                     System.out.println("Введите номер удаляемой строки");
-                    try{
+                    try {
                         ind = scan.nextInt();
-                    }
-                    catch(InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         System.out.println("Введите номер!");
                         break;
-                     }
-                    if(ind > ContactBase.size())
-                    {
+                    }
+                    if (ind > ContactBase.size()) {
                         System.out.println("Введите номер меньше либо равный объему базы");
                         break;
                     }
@@ -77,7 +76,7 @@ public class Main {
                     else ContactBase.deleteByName(name);
                     break;
                 }
-                case 4:{
+                case 4: {
                     ContactBase.display();
                     break;
                 }
@@ -101,10 +100,9 @@ public class Main {
                         System.out.println("2 - изменить номер телефона");
                         System.out.println("3 - изменить email");
                         System.out.println("4 - выход из подпрограммы");
-                        try{
+                        try {
                             b = scan.nextInt();
-                        }
-                        catch(InputMismatchException e){
+                        } catch (InputMismatchException e) {
                             System.out.println("Введите номер!");
                             break;
                         }
@@ -138,17 +136,25 @@ public class Main {
                     }
                     break;
                 }
-                case 7:
-                    System.exit(0);
-                default:
-                    System.out.println("Введите число от 1 до 7!");
+                case 7: {
+                    //sorting
+                    ContactBase.sort();
+                    ContactBase.display();
                     break;
+                }
+
+                case 8: {
+                    System.exit(0);
+                }
+                default: {
+                    System.out.println("Введите число от 1 до 8!");
+                    break;
+                }
             }
-        }
+    }
     }
 
-    private static class ArrayList {
-    }
+
 }
 //Tasks 14/4/2015
 // 1 - поиск по имени  OK
