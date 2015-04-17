@@ -35,40 +35,40 @@ public class ContactArray {
     }
 
     public void display(int ind) {
-        System.out.println(ListStandart.get(ind).name + " " + ListStandart.get(ind).phone + " " + ListStandart.get(ind).email);
+        System.out.println(ListStandart.get(ind).getName() + " " + ListStandart.get(ind).getPhone() + " " + ListStandart.get(ind).getEmail());
     }
 
     public int searchByName(String name) {
         for (int i = 0; i < ListStandart.size(); i++)
-            if (name.equals(ListStandart.get(i).name))   return i;
+            if (name.equals(ListStandart.get(i).getName()))   return i;
         return -1;
     }
 
     public void changename (String name, int ind){
-        ListStandart.get(ind).name = name;
+        ListStandart.get(ind).setName(name);
     }
     public void changephone (String phone, int ind){
-        ListStandart.get(ind).phone = phone;
+        ListStandart.get(ind).setPhone(phone);
     }
     public void changeemail (String email, int ind){
-        ListStandart.get(ind).email = email;
+        ListStandart.get(ind).setEmail(email);
     }
     public void sort(){
         int minind;
         for( int i = 0; i < ListStandart.size(); i++){
             minind = i;
             for(int j = i; j<ListStandart.size();j++){
-                if(ListStandart.get(j).name.compareTo(ListStandart.get(minind).name) < 0 )  minind = j;
+                if(ListStandart.get(j).getName().compareTo(ListStandart.get(minind).getName()) < 0 )  minind = j;
             }
-            String name = ListStandart.get(i).name;
-            String phone = ListStandart.get(i).phone;
-            String email = ListStandart.get(i).email;
-            ListStandart.get(i).name = ListStandart.get(minind).name;
-            ListStandart.get(i).phone = ListStandart.get(minind).phone;
-            ListStandart.get(i).email = ListStandart.get(minind).email;
-            ListStandart.get(minind).name = name;
-            ListStandart.get(minind).phone = phone;
-            ListStandart.get(minind).email = email;
+            String name = ListStandart.get(i).getName();
+            String phone = ListStandart.get(i).getPhone();
+            String email = ListStandart.get(i).getEmail();
+            ListStandart.get(i).setName(ListStandart.get(minind).getName());
+            ListStandart.get(i).setPhone(ListStandart.get(minind).getPhone());
+            ListStandart.get(i).setEmail(ListStandart.get(minind).getEmail());
+            ListStandart.get(minind).setName(name);
+            ListStandart.get(minind).setPhone(phone);
+            ListStandart.get(minind).setEmail(email);
         }
     }
 }
