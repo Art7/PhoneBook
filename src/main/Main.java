@@ -1,5 +1,6 @@
 package main;
 
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,6 +25,20 @@ public class Main {
         int a=0, b=0, ind;
         String name, phone, email;
         ContactArray ContactBase = new ContactArray();
+        String text;
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("output.txt")));
+            while ((text = reader.readLine()) != null) {
+                String[] splitting = text.split("\\|");
+                ContactBase.add(splitting[0].split(":")[1], splitting[1].split(":")[1],splitting[2].split(":")[1]);
+            }
+            reader.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println(e.getStackTrace());
+        }
         while (true) {
             System.out.println("Меню:");
             System.out.println("1 - добавить контакт");
@@ -144,6 +159,18 @@ public class Main {
                 }
 
                 case 8: {
+                    try {
+                        PrintWriter writer = new PrintWriter(new FileOutputStream("output.txt",false));
+                        for(int i=0;i<ContactBase.size();i++) {
+                            writer.println("name:" + ContactBase.getName(i) + "|phone:" + ContactBase.getPhone(i) + "|email:" + ContactBase.getEmail(i));
+
+                        }
+                        writer.flush();
+                        writer.close();
+                    }
+                    catch (FileNotFoundException e){
+                        System.out.println("File not found!");
+                    }
                     System.exit(0);
                 }
                 default: {

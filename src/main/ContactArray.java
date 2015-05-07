@@ -53,6 +53,9 @@ public class ContactArray {
     public void changeemail (String email, int ind){
         ListStandart.get(ind).setEmail(email);
     }
+    public String getName (int ind){return ListStandart.get(ind).getName();}
+    public String getPhone (int ind) {return ListStandart.get(ind).getPhone();}
+    public String getEmail(int ind) {return ListStandart.get(ind).getEmail();}
     public void sort(){
         int minind;
         for( int i = 0; i < ListStandart.size(); i++){

@@ -1,5 +1,9 @@
 package main;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 /**
  * Created by Artur on 14.04.2015.
  */
@@ -12,6 +16,7 @@ public class Contact {
         this.name = name;
         this.phone = phone;
         this.email = email;
+
     }
     public void display(){
         System.out.println(name + " " + phone + " " + email);
